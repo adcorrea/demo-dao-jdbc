@@ -45,6 +45,11 @@ public class Program {
 			sellerDao.insert(test);
 			System.out.println(test);
 			System.out.println();
+			
+			System.out.println("=== TEST 5 seller update");
+			Seller testUpdate = new Seller(10, "Junior", "junior@gmail.com", sdf.parse("23/08/1986"), 12000.0, department);
+			sellerDao.update(testUpdate);
+			System.out.println();
 		}
 		catch(DbException e){
 			e.printStackTrace();
