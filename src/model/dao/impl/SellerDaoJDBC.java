@@ -43,14 +43,18 @@ public class SellerDaoJDBC implements SellerDao {
 			st.setDouble(4, seller.getBaseSalary());
 			st.setInt(5, seller.getDepartment().getId());
 			
-			st.executeUpdate();
+			int rowsAffect = st.executeUpdate();
 			
-			rs = st.getGeneratedKeys();
-			
-			if(rs.next()) {
-				seller.setId(rs.getInt(1));
+			if(rowsAffect > 0) {
+				rs = st.getGeneratedKeys();
+				
+				if(rs.next()) {
+					seller.setId(rs.getInt(1));
+				}
 			}
-			
+			else {
+				throw new DbException("Unexpectred error! No rows Affected!");
+			}
 			
 		}
 		catch(SQLException e) {
