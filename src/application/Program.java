@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import db.DB;
 import db.DbException;
@@ -51,8 +52,12 @@ public class Program {
 			sellerDao.update(testUpdate);
 			System.out.println();
 			
-			System.out.println("=== TEST 6 seller delete");			
-			sellerDao.deleteById(12);
+			System.out.println("=== TEST 6 seller delete");	
+			Scanner sc = new Scanner(System.in);
+			System.out.print("Enter id to delete: ");
+			int id = sc.nextInt();
+			sellerDao.deleteById(id);
+			sc.close();
 			System.out.println();
 		}
 		catch(DbException e){
