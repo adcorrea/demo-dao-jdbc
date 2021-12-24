@@ -50,6 +50,10 @@ public class Program {
 			Seller testUpdate = new Seller(10, "Junior", "junior@gmail.com", sdf.parse("23/08/1986"), 12000.0, department);
 			sellerDao.update(testUpdate);
 			System.out.println();
+			
+			System.out.println("=== TEST 6 seller delete");			
+			sellerDao.deleteById(12);
+			System.out.println();
 		}
 		catch(DbException e){
 			e.printStackTrace();
