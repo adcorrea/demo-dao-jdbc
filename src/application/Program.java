@@ -2,6 +2,7 @@ package application;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import db.DB;
 import db.DbException;
@@ -23,8 +24,15 @@ public class Program {
 			SellerDao sellerDao = DaoFactory.createSellerDao();
 			Seller seller = sellerDao.findById(3);		
 			System.out.println(seller);
+			System.out.println();
 			
-			System.out.println("=== TEST 2 Department findById");
+			System.out.println("=== TEST 2 seller findByDeparment");
+			Department department = new Department(2, null);
+			List<Seller> listSellerDao = sellerDao.findByDepartment(department);
+			listSellerDao.forEach(System.out::println);
+			System.out.println();
+			
+			System.out.println("=== TEST 3 Department findById");
 			DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 			Department dep = departmentDao.findById(2);
 			System.out.print(dep);
