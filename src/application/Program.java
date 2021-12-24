@@ -1,6 +1,8 @@
 package application;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +21,8 @@ public class Program {
 		
 		try {
 			
-		
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
 			System.out.println("=== TEST 1 seller findById");		
 			SellerDao sellerDao = DaoFactory.createSellerDao();
 			Seller seller = sellerDao.findById(3);		
@@ -36,8 +39,17 @@ public class Program {
 			listSellerDao = sellerDao.findAll();
 			listSellerDao.forEach(System.out::println);
 			System.out.println();
+			
+			System.out.println("=== TEST 4 seller insert");
+			Seller test = new Seller(null, "Junior", "junior@gmail.com", sdf.parse("24/08/1986"), 12000.0, department);
+			sellerDao.insert(test);
+			System.out.println(test);
+			System.out.println();
 		}
 		catch(DbException e){
+			e.printStackTrace();
+		}
+		catch(ParseException e) {
 			e.printStackTrace();
 		}
 		finally {
