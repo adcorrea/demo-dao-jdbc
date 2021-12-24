@@ -32,10 +32,10 @@ public class Program {
 			listSellerDao.forEach(System.out::println);
 			System.out.println();
 			
-			System.out.println("=== TEST 3 Department findById");
-			DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
-			Department dep = departmentDao.findById(2);
-			System.out.print(dep);
+			System.out.println("=== TEST 3 seller findAll");
+			listSellerDao = sellerDao.findAll();
+			listSellerDao.forEach(System.out::println);
+			System.out.println();
 		}
 		catch(DbException e){
 			e.printStackTrace();
